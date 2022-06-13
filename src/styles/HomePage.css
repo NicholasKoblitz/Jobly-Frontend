@@ -1,0 +1,9 @@
+.jobly {
+    text-align: center;
+    position: relative;
+    top: 30vh;
+}
+
+.jobly h1 {
+    font-size: 60px;
+}

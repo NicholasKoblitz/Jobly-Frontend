@@ -1,0 +1,14 @@
+.companies form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* flex-direction: column; */
+    gap: .5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid black;
+}
+
+.companies div a {
+    color: black;
+    text-decoration: none;
+}

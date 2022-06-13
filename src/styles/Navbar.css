@@ -1,0 +1,48 @@
+.navbar {
+    background-color: lightcoral;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+}
+
+.navbar-title {
+    margin-left: 1rem;
+}
+
+.navbar-title a {
+    text-decoration: none;
+    font-size: 20px;
+    color: darkblue;
+    font-weight: bold;
+}
+
+.navbar-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-signin-login {
+    margin-right: 3rem;
+}
+
+.navbar-signin-login a {
+    text-decoration: none;
+    font-size: 18px;
+    color: darkblue;
+}
+
+.navbar-navigate {
+    margin-right: 1em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-navigate a {
+    text-decoration: none;
+    font-size: 18px;
+    color: darkblue;
+    margin-right: 1rem;
+}

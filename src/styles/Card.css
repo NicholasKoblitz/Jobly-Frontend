@@ -1,0 +1,12 @@
+.card {
+    background-color: rgb(191, 210, 228);
+    display: inline-block;
+    margin: 1rem;
+    padding: .5vh 5vw;
+    border-radius: 20px;
+}
+
+.card-title h2 {
+    border-bottom: 1px dashed black;
+    padding-bottom: .5rem;
+}
