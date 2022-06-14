@@ -10,7 +10,7 @@ const JobDetails = () => {
     const user = localStorage.getItem("currentUser");
     const [apply, setApply] = useState(false)
     const [isRendered, setIsRendered] = useState(false)
-    let applyList = JSON.parse(localStorage.getItem("applied"))
+    let applyList = JSON.parse(localStorage.getItem("applied")) || [];
     let isApplied = applyList.filter(a => +id === a)
 
     useEffect(() => {
