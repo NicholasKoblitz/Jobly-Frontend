@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";import JoblyApi from "../api";
 
 const Profile = () => {
  
+    const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
     const INITIAL_STATE = {
         firstName: '',
         lastName: '',

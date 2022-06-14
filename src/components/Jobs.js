@@ -7,6 +7,7 @@ import '../styles/Jobs.css'
 
 const Jobs = () => {
 
+    const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
     const [jobs, setJobs] = useState([]);
     const {user} = useContext(UserContext);
     const navigate = useNavigate();

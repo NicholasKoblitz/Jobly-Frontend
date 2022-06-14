@@ -7,6 +7,7 @@ import UserContext from "./UserContext";
 
 const SignupForm = () => {
 
+    const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
     const INITIAL_STATE = {
         username: '',
         password: '',

@@ -5,7 +5,7 @@ import UserContext from "./UserContext";
 
 const CompanyDetails = () => {
 
-
+    const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
     const [company, setCompany] = useState(null)
     const {handle} = useParams()
     const user = localStorage.getItem("currentUser");

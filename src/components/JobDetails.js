@@ -4,6 +4,7 @@ import JoblyApi from '../api';
 
 const JobDetails = () => {
 
+    const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
     const [job, setJob] = useState()
     const {id} = useParams()
     const user = localStorage.getItem("currentUser");
