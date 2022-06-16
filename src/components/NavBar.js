@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import {NavLink} from 'react-router-dom'
 import '../styles/Navbar.css'
 import TokenContext from "./TokenContext";
@@ -10,17 +10,14 @@ const NavBar = () => {
     const {setToken} = useContext(TokenContext);
     const user = localStorage.getItem("currentUser")
     const {setUser} = useContext(UserContext)
+    let logedin = localStorage.getItem("token") ?  true : false
 
     const removeToken = () => {
         setToken('');
         setUser('')
         localStorage.removeItem("token");
         localStorage.removeItem("currentUser");
-        isLogedIn = false;
     }
-
-    let isLogedIn = localStorage.getItem("token") ?  true : false
-        
 
     return (
         <div className='navbar'>
@@ -28,7 +25,7 @@ const NavBar = () => {
                 <NavLink to="/">Jobly</NavLink>
             </div> 
             <div className="navbar-links">
-               {isLogedIn ? 
+               {logedin ? 
                 <div className="navbar-signin-login">
                     <NavLink to={`/users/${user}`}>{user}</NavLink>  <NavLink to='/' onClick={removeToken}>Logout</NavLink>
                 </div> :

@@ -6,7 +6,7 @@ import HomePage from './HomePage';
 import Companies from './Companies';
 import CompanyDetails from './CompanyDetails';
 import Jobs from './Jobs';
-import JobDetails from './JobDetails';
+// import JobDetails from './JobDetails';
 import TokenContext from './TokenContext';
 import UserContext from './UserContext';
 import SignupForm from './SignupForm';
@@ -32,7 +32,6 @@ function App() {
               <Route  path='/companies' element={<Companies/>} />
               <Route exact path="/companies/:handle" element={<CompanyDetails/>} />
               <Route exact path="/jobs" element={<Jobs/>} />
-              <Route exact path="/jobs/:id" element={<JobDetails/>}/>
               <Route exact path="/signup" element={<SignupForm/>} />
               <Route exact path="/login" element={<LoginForm/>} />
               <Route exact path='/users/:username' element={<Profile/>}/>

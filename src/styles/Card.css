@@ -2,11 +2,23 @@
     background-color: rgb(191, 210, 228);
     display: inline-block;
     margin: 1rem;
-    padding: .5vh 5vw;
+    padding: .7vh 5vw;
     border-radius: 20px;
+    min-width: 600px;
 }
 
 .card-title h2 {
     border-bottom: 1px dashed black;
     padding-bottom: .5rem;
+}
+
+.card-body .apply {
+    font-size: 18px;
+    border: 2px solid lightcoral;
+    border-radius: 10px;
+    margin-bottom: .5vh;
+}
+
+.card-body .apply:hover {
+    background-color: lightcyan
 }

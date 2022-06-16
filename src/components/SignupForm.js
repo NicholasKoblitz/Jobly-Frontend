@@ -18,11 +18,20 @@ const SignupForm = () => {
     }
 
     const [formData, setFormData] = useState(INITIAL_STATE);
-    const [userInfo, setUserInfo] = useState(INITIAL_STATE);
     const {setToken} = useContext(TokenContext);
-    const {user, setUser} = useContext(UserContext);
+    const {setUser} = useContext(UserContext);
     const navigate = useNavigate()
-    
+
+
+    const registerUser = async () => {
+        let res = await JoblyApi.register(formData);
+        setToken(res)
+        setUser(formData.username)
+        localStorage.setItem("token", res.token)
+        localStorage.setItem("currentUser", formData.username)
+        navigate(`/users/${formData.username}`, {replace: true})
+    }
+     
     const handleChange = (e) => {
         const {name, value} = e.target;
         setFormData(formData => ({
@@ -32,26 +41,12 @@ const SignupForm = () => {
     }
 
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        let info = {...formData}
-        setUserInfo(info)
+        await registerUser();
         setFormData(INITIAL_STATE);
         
     }
-
-
-    useEffect(() => {
-        async function registerUser() {
-            let res = await JoblyApi.register(userInfo);
-            setToken(res)
-            setUser(userInfo.username)
-            localStorage.setItem("token", res.token)
-            localStorage.setItem("currentUser", userInfo.username)
-            navigate(`/users/${userInfo.username}`, {replace: true})
-        }
-        registerUser();
-    },[userInfo])
 
 
     return (
@@ -66,7 +61,7 @@ const SignupForm = () => {
                 />
                 <label htmlFor="password">Password</label>
                 <input
-                    type="text"
+                    type="password"
                     name="password"
                     value={formData.password}
                     onChange={handleChange}

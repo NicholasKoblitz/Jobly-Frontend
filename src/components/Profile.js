@@ -12,12 +12,8 @@ const Profile = () => {
     
     const [formData, setFormData] = useState(INITIAL_STATE);
     const [userInfo, setUserInfo] = useState(INITIAL_STATE);
-    const [updateInfo, setUpdateInfo] = useState(INITIAL_STATE)
     const [isClicked, setIsClicked] = useState(false)
     const {username} = useParams();
-    let isAfterFirstRender = useRef(false);
-
-
 
     useEffect(() => {
         async function fetchUser(username) {
@@ -29,20 +25,11 @@ const Profile = () => {
     }, [])
 
 
-    useEffect(() => {
-        if(isAfterFirstRender.current) {
-            async function update(username, userInfo) {
-                JoblyApi.token = localStorage.getItem("token")
-                let res = await JoblyApi.updateUser(username, userInfo)
-                setUserInfo(res)
-            }
-            update(username, updateInfo)
-        }
-        else {
-            isAfterFirstRender.current = true;
-        }
-    }, [updateInfo])
-
+    const update = async (username, info) => {
+        JoblyApi.token = localStorage.getItem("token")
+        let res = await JoblyApi.updateUser(username, formData)
+        setUserInfo(res)
+    }
 
     const handleChange = (e) => {
         const {name, value} = e.target;
@@ -54,8 +41,7 @@ const Profile = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        let info = {...formData}
-        setUpdateInfo(info)
+        update(username, formData)
         setFormData(INITIAL_STATE);
         setIsClicked(!isClicked)
         
@@ -70,7 +56,6 @@ const Profile = () => {
         <div>
             {isClicked ? 
                 <div>
-                    <button onClick={handleClick}>Back</button>
                     <form onSubmit={handleSubmit}>
                     <label htmlFor="firstName">First Name</label>
                 <input 

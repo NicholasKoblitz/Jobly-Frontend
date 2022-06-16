@@ -1,7 +1,8 @@
 import React, {useState, useEffect, useContext} from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import JoblyApi from '../api';
-import UserContext from "./UserContext";
+import JobCard from "./JobCard";
+import '../styles/Company.css'
 
 const CompanyDetails = () => {
 
@@ -10,7 +11,6 @@ const CompanyDetails = () => {
     const {handle} = useParams()
     const user = localStorage.getItem("currentUser");
     const navigate = useNavigate();
-
 
     useEffect(() => {
         function auth() {
@@ -28,20 +28,16 @@ const CompanyDetails = () => {
         }
         fetchCompany(handle);
     },[])
-
     
-
-
     let details = company ? 
     <>
         <h2>{company.name}</h2>
             <section>
-                <p>Number of Employees: {company.numEmployees}</p>
-                <p>Description: {company.description}</p>
-                <img src={company.logoUrl} alt={`${company.name} logo`} />
+                <p><strong>Number of Employees:</strong> {company.numEmployees}</p>
+                <p><strong>Description:</strong> {company.description}</p>
                 <h3>Jobs Offered by {company.name}</h3>
                 <ul>
-                    {company.jobs.map(job => <li key={job.id}>{job.title}</li>)}
+                    {company.jobs.map((job => <JobCard title={job.title} salary={job.salary}/>))}
                 </ul>
                 
             </section> 

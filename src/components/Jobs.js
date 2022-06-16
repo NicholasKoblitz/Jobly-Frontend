@@ -33,14 +33,13 @@ const Jobs = () => {
         <div className="jobs">
             
             {jobs.map(job => 
-            <Link to={`/jobs/${job.id}`} key={job.id}>
                  <JobCard
+                    id={job.id}
                     title={job.title}
                     salary={job.salary}
                     company={job.companyName}
                     
                 />
-            </Link>
             )}
         </div>
         
